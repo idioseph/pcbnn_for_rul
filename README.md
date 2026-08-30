@@ -1,5 +1,4 @@
 # PCBNN: Physics-Constrained Bayesian Neural Network
-# PCBNN: Physics-Constrained Bayesian Neural Network
 
 A TensorFlow reconstruction of the Physics-Constrained Bayesian Neural Network (PCBNN) framework for machinery Remaining Useful Life (RUL) prediction and uncertainty quantification.
 
