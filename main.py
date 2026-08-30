@@ -513,10 +513,15 @@ class ArrayBatcher:
 
 # Total Loss Function
 
-def total_loss(y: tf.Tensor, alpha: tf.Tensor, beta: tf.Tensor, kl: tf.Tensor, residual_loss: tf.Tensor, dataset_size: int, batch_size: int, eta: float, max_beta: float, max_power: float) -> Tuple[tf.Tensor, tf.Tensor, tf.Tensor]:
+def total_loss(y: tf.Tensor, alpha: tf.Tensor, beta: tf.Tensor, kl: tf.Tensor, residual_loss: tf.Tensor, dataset_size, batch_size, eta: float, max_beta: float, max_power: float) -> Tuple[tf.Tensor, tf.Tensor, tf.Tensor]:
     """Combines Variational ELBO scaling and Physics constraints into the final objective."""
     nll_batch = weibull_nll(y, alpha, beta, max_beta=max_beta, max_power=max_power)
-    scale = float(dataset_size) / float(max(batch_size, 1))
+    
+    # Use TensorFlow graph math instead of Python max() and float()
+    dataset_size_tf = tf.cast(dataset_size, tf.float32)
+    batch_size_tf = tf.cast(tf.maximum(batch_size, 1), tf.float32)
+    scale = dataset_size_tf / batch_size_tf
+    
     expected_full_nll = nll_batch * scale # Scale up to represent full dataset size (Eq. 35)
     elbo = kl + expected_full_nll
     total = elbo + eta * residual_loss    # Final Loss combining Bayes and Physics (Eq. 37)
