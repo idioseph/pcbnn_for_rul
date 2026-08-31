@@ -8,13 +8,13 @@ This implementation strictly adheres to the architecture and methodologies descr
 
 ## Architecture Overview
 
-The PCBNN framework addresses the limitations of standard data-driven prognostics by integrating probabilistic reasoning and physical laws into a unified, end-to-end architecture[cite: 1]:
+The PCBNN framework addresses the limitations of standard data-driven prognostics by integrating probabilistic reasoning and physical laws into a unified, end-to-end architecture:
 
 1. **Dual-Stage Neural Network (DSNN):**
-   - **Segmented Bi-LSTM:** Partitions time-series sensor data to capture bidirectional, localized degradation features efficiently[cite: 1].
-   - **Bayesian Hierarchical Gated Recurrent Regressor (HGRR):** Utilizes complex-valued temporal dynamics to model phase-coupled and frequency-dependent system behaviors[cite: 1].
-2. **Weibull Likelihood Variational Inference:** Outputs the scale ($\alpha$) and shape ($\beta$) parameters of a Weibull distribution to accurately model the time-to-failure probability density, capturing both epistemic and aleatoric uncertainties[cite: 1].
-3. **Deep Hidden Physics Model (deep-HPM):** Extracts underlying degradation mechanics by incorporating a data-driven partial differential equation (PDE) as a residual penalty in the loss function, enforcing physical consistency[cite: 1].
+   - **Segmented Bi-LSTM:** Partitions time-series sensor data to capture bidirectional, localized degradation features efficiently.
+   - **Bayesian Hierarchical Gated Recurrent Regressor (HGRR):** Utilizes complex-valued temporal dynamics to model phase-coupled and frequency-dependent system behaviors.
+2. **Weibull Likelihood Variational Inference:** Outputs the scale ($\alpha$) and shape ($\beta$) parameters of a Weibull distribution to accurately model the time-to-failure probability density, capturing both epistemic and aleatoric uncertainties.
+3. **Deep Hidden Physics Model (deep-HPM):** Extracts underlying degradation mechanics by incorporating a data-driven partial differential equation (PDE) as a residual penalty in the loss function, enforcing physical consistency.
 
 ## Requirements
 
