@@ -422,7 +422,7 @@ def load_cmapss_training_trajectories(data_root: str | Path, dataset: str) -> Li
 
     unit = train.iloc[:, 0].to_numpy(dtype=np.int64)
     cycle = train.iloc[:, 1].to_numpy(dtype=np.float32)
-    sensors_all = train.iloc[:, 2:23].to_numpy(dtype=np.float32)
+    sensors_all = train.iloc[:, 5:23].to_numpy(dtype=np.float32)
 
     keep_indices = [i for i in range(21) if (i + 1) not in REMOVED_CMAPPSS_SENSORS]
     sensors = sensors_all[:, keep_indices]
@@ -713,7 +713,7 @@ def load_cmapss_test_trajectories(data_root: str | Path, dataset: str) -> Tuple[
     
     unit = test.iloc[:, 0].to_numpy(dtype=np.int64)
     cycle = test.iloc[:, 1].to_numpy(dtype=np.float32)
-    sensors_all = test.iloc[:, 2:23].to_numpy(dtype=np.float32)
+    sensors_all = test.iloc[:, 5:23].to_numpy(dtype=np.float32)
 
     keep_indices = [i for i in range(21) if (i + 1) not in REMOVED_CMAPPSS_SENSORS]
     sensors = sensors_all[:, keep_indices]
